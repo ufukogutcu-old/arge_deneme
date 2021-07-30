@@ -1,6 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
-from django.contrib.auth.backends import BaseBackend
 
 
 # Create your models here.

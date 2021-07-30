@@ -58,11 +58,14 @@ class APITest(APITestCase):
         client.logout()
 
     def test_post_item(self):
+
         client = APIClient()
         client.login(username=self.username, password=self.password)
         item = Item.objects.create(name='a', size=30, color='red')
         data = ItemSerializer(item).data
+        item.delete()
         response = client.post('/api/items/', data, format='json')
+        self.assertEqual(response.status_code, 201)
         self.assertEqual(Item.objects.first().name, 'a')
         self.assertEqual(Item.objects.first().size, 30)
         self.assertEqual(Item.objects.first().color, 'red')
