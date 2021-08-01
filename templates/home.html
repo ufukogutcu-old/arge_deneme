@@ -1,5 +1,19 @@
 <html>
+    <table style="width:45%, padding: 60%">
+  <tr>
+    <th>Name</th>
+    <th>Size</th>
+    <th>Color</th>
+    <th>Creator</th>
+  </tr>
     {% for item in items %}
-    {{ item }}
+  <tr>
+    <td>{{item.name}}</td>
+    <td>{{item.size}}</td>
+    <td>{{item.color}}</td>
+    <td>{{item.creator.username}}</td>
+  </tr>
+
     {% endfor %}
+    </table>
 </html>
