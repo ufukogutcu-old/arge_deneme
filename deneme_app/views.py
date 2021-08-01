@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from rest_framework import viewsets, permissions
-from .models import Item
-from django.contrib.auth.models import User
+from .models import Item, MyUser
 from .serializers import ItemSerializer, UserSerializer
 
 # Create your views here.
@@ -13,7 +12,7 @@ class ItemViewSet(viewsets.ModelViewSet):
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all().order_by('-date_joined')
+    queryset = MyUser.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]
 

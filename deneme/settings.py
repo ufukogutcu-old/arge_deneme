@@ -105,6 +105,7 @@ else:
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
+AUTH_USER_MODEL = 'deneme_app.MyUser'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
