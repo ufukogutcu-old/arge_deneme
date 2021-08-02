@@ -16,3 +16,7 @@ class Item(models.Model):
     size = models.IntegerField()
     color = models.CharField(max_length=10)
     creator = models.ForeignKey(MyUser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        string = str(self.name) + ':' + str(self.size) + ':' + str(self.color) + ':' + str(self.creator)
+        return string
