@@ -1,4 +1,12 @@
 <html>
+
+    {% if isLoggedIn == False %}
+    <h1>
+      Since you are not logged in, you can see all the items. Try logging in to ee just that users items. (username:admin, password:admin)
+    </h1>
+    {% endif %}
+
+
     <table style="width:45%, padding: 60%">
   <tr>
     <th>Name</th>

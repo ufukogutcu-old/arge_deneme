@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AnonymousUser
 from django.shortcuts import render
 from rest_framework import viewsets, permissions
 from .models import Item, MyUser
@@ -21,10 +22,16 @@ class UserViewSet(viewsets.ModelViewSet):
 
 def home_view(request):
     user = request.user
-    items = Item.objects.filter(
-        Q(creator=user) & Q(size__gte=0)
-    )
+    if str(user) == 'AnonymousUser':
+        items = Item.objects.all()
+        is_logged_in = False
+    else:
+        items = Item.objects.filter(
+            Q(creator=user) & Q(size__gte=0)
+        )
+        is_logged_in = True
     context = {
         'items': items,
+        'isLoggedIn': is_logged_in,
     }
     return render(request, 'home.html', context)
