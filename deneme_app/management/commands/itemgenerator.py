@@ -13,8 +13,8 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         number_of_items = options['number_of_items']
         items = Item.objects.all()
-        # for item in items:
-        #     item.delete()
+        for item in items:
+            item.delete()
         used_names = []
         color_choices = ['red', 'blue', 'green', 'yellow', 'black', 'pink']
         letters = string.ascii_letters
@@ -32,6 +32,6 @@ class Command(BaseCommand):
                     creator=user
                 )
                 used_names.append(name)
-                print(item)
+                item.save()
                 # item.save()
         self.stdout.write('Successfully created {} items for each user'.format(str(number_of_items)))
